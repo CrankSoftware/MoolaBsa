@@ -43,6 +43,7 @@
     <Compile Include="Abstract\BaseModelOutput.cs" />
     <Compile Include="Enumerations\FilterPolarity.cs" />
     <Compile Include="Enumerations\FilterType.cs" />
+    <Compile Include="Exceptions\BsaInputParameterException.cs" />
     <Compile Include="ExtensionMethods\ExtendIEnumerable.cs" />
     <Compile Include="Interfaces\Analyser\IAnalyzer.cs" />
     <Compile Include="Interfaces\Analyser\IAnalyzerInput.cs" />

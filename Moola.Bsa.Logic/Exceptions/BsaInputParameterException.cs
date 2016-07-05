@@ -11,15 +11,15 @@ namespace Moola.Bsa.Logic.Exceptions
         }
 
         public BsaInputParameterException(string message) : base(message)
-{
+        {
         }
 
         public BsaInputParameterException(string message, Exception innerException) : base(message, innerException)
-{
+        {
         }
 
         protected BsaInputParameterException(SerializationInfo info, StreamingContext context) : base(info, context)
-{
+        {
         }
 
     }

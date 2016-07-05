@@ -2,9 +2,9 @@
 using Moola.Bsa.Logic.Enumerations;
 using Moola.Bsa.Logic.Interfaces;
 
-namespace Moola.Bsa.Logic.Models.Inputs
+namespace Moola.Bsa.Logic.Abstract
 {
-    public abstract class BaseInput : IRecords
+    public abstract class BaseInput
     {
         /// <summary>
         /// The number of days that the records span
@@ -16,7 +16,7 @@ namespace Moola.Bsa.Logic.Models.Inputs
         /// <summary>
         /// Bank account records for input
         /// </summary>
-        public List<Record> Records { get; set; }
+        public List<IRecord> Records { get; set; }
 
         /// <summary>
         /// The terms by which to filter the records

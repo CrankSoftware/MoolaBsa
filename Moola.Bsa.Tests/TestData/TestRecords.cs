@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Moola.Bsa.Logic.Models.Inputs;
+using Moola.Bsa.Logic.Models;
+using Moola.Bsa.Logic.Interfaces;
 
 namespace Moola.Bsa.Tests.TestData
 {
@@ -10,7 +12,7 @@ namespace Moola.Bsa.Tests.TestData
         {
             return new List<CodeData>()
             {
-                new CodeData() { Code = "MSMNPB", Records = new List<Record>() {
+                new CodeData() { Code = "MSMNPB", Records = new List<IRecord>() {
                     new Record {Amount = -18.38, Description = "EFTPOS-Caltex Lincoln Rd Card number: 4xxx **** **** 2983 On Tue, 28 Jun at 7:21am", RunningBalance = 74.49, TransactionDate = new DateTime(2016,6,28)},
                     new Record {Amount = -25.01, Description = "EFTPOS-Four Square Mangawha Card number: 4xxx **** **** 2983 On Sat, 25 Jun at 4:02pm", RunningBalance = 74.49, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = -23.14, Description = "Visa Purchase-Paypal *Suwi Card number: 4xxx **** **** 2983 On Mon, 27 Jun at 11:53pm", RunningBalance = 74.49, TransactionDate = new DateTime(2016,6,27)},
@@ -155,7 +157,7 @@ namespace Moola.Bsa.Tests.TestData
                     new Record {Amount = 100, Description = "Direct Credit-Ms Dorota-Anna Wisni Mum Loan Jacket On Wed, 30 Mar at 12:00am", RunningBalance = -201.92, TransactionDate = new DateTime(2016,3,30)},
 
 }},
-new CodeData() { Code = "JBLFUG", Records = new List<Record>() {
+new CodeData() { Code = "JBLFUG", Records = new List<IRecord>() {
                     new Record {Amount = -2, Description = "Other Bank ATM Fee", RunningBalance = -8.51, TransactionDate = new DateTime(2016,6,24)},
                     new Record {Amount = -100, Description = "Atm Debit-Asb Axx4700 Asb Hawera B Card number: 5xxx **** **** 6175 On Thu, 23 Jun at 10:05pm", RunningBalance = -6.51, TransactionDate = new DateTime(2016,6,24)},
                     new Record {Amount = -24.5, Description = "EFTPOS-Xiangping Qiu Card number: 5xxx **** **** 6175 On Thu, 23 Jun at 7:23pm", RunningBalance = 93.49, TransactionDate = new DateTime(2016,6,23)},
@@ -291,7 +293,7 @@ new CodeData() { Code = "JBLFUG", Records = new List<Record>() {
                     new Record {Amount = 175, Description = "Credit-Studylink (Msd) Lc Payment Ref:x4500 Ssvxxxxx9168 On Wed, 30 Mar at 12:00am", RunningBalance = 174.27, TransactionDate = new DateTime(2016,3,30)},
 
 }},
-new CodeData() { Code = "FNQTCC", Records = new List<Record>() {
+new CodeData() { Code = "FNQTCC", Records = new List<IRecord>() {
                     new Record {Amount = 36.2, Description = "DKSH NZ LTD  DKSH NZ", RunningBalance = -10024, TransactionDate = new DateTime(2016,6,15)},
                     new Record {Amount = -20, Description = "Unpaid DD Charge  ENERGY ONLINE", RunningBalance = -10060.2, TransactionDate = new DateTime(2016,6,14)},
                     new Record {Amount = -1, Description = "ANZ New Zealand  Other Bank ATM Usage WD", RunningBalance = -10040.2, TransactionDate = new DateTime(2016,6,13)},
@@ -508,7 +510,7 @@ new CodeData() { Code = "FNQTCC", Records = new List<Record>() {
                     new Record {Amount = -25.5, Description = "CARD 5536  THE RAUMATISOCIAL CLUBPARAPARAUMU", RunningBalance = -5563.07, TransactionDate = new DateTime(2016,3,30)},
 
 }},
-new CodeData() { Code = "TRVCRG", Records = new List<Record>() {
+new CodeData() { Code = "TRVCRG", Records = new List<IRecord>() {
                     new Record {Amount = -0.95, Description = "MB TRANSFER  TO xx-xxxx-xxxxxx8-00", RunningBalance = -1000, TransactionDate = new DateTime(2016,6,23)},
                     new Record {Amount = -30, Description = "MB TRANSFER  TO xx-xxxx-xxxxxx8-00", RunningBalance = -999.05, TransactionDate = new DateTime(2016,6,23)},
                     new Record {Amount = 30, Description = "TFR FROM DR MOSS  ODOD", RunningBalance = -969.05, TransactionDate = new DateTime(2016,6,22)},
@@ -527,7 +529,7 @@ new CodeData() { Code = "TRVCRG", Records = new List<Record>() {
                     new Record {Amount = -2, Description = "OVERDRAFT FACILITY FEE", RunningBalance = -1075.94, TransactionDate = new DateTime(2016,4,2)},
 
 }},
-new CodeData() { Code = "HV68TP", Records = new List<Record>() {
+new CodeData() { Code = "HV68TP", Records = new List<IRecord>() {
                     new Record {Amount = -1, Description = "ATM RECOVERY ANZ/NAT TRANSACTION", RunningBalance = 3.56, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = -1, Description = "ATM RECOVERY FEE WPT ENQUIRY", RunningBalance = 4.56, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = -2, Description = "ATM RECOVERY FEE WPT TRANSACTION", RunningBalance = 5.56, TransactionDate = new DateTime(2016,6,27)},
@@ -791,7 +793,7 @@ new CodeData() { Code = "HV68TP", Records = new List<Record>() {
                     new Record {Amount = 1193.08, Description = "Ipayroll Limite PETFOODNZ IN  IPAYROLL", RunningBalance = 1286.38, TransactionDate = new DateTime(2016,3,30)},
 
 }},
-new CodeData() { Code = "A3PNDX", Records = new List<Record>() {
+new CodeData() { Code = "A3PNDX", Records = new List<IRecord>() {
                     new Record {Amount = -30, Description = "OMAHU NIGHT'N DAY xxxxxxxx7013 HASTINGS   xxxxxx1300", RunningBalance = 61.34, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = -72.98, Description = "BIG BARREL HASTINGS xxxxxxxx1295 HASTINGS   xxxxxx1648", RunningBalance = 91.34, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = -31.19, Description = "BIG BARREL xxxxxxxx7013 HASTINGS   xxxxxx2148", RunningBalance = 164.32, TransactionDate = new DateTime(2016,6,27)},
@@ -1335,7 +1337,7 @@ new CodeData() { Code = "A3PNDX", Records = new List<Record>() {
                     new Record {Amount = 1065.97, Description = "Oceania Group Limite", RunningBalance = 1082.48, TransactionDate = new DateTime(2016,3,30)},
 
 }},
-new CodeData() { Code = "KQDMFX", Records = new List<Record>() {
+new CodeData() { Code = "KQDMFX", Records = new List<IRecord>() {
                     new Record {Amount = 2, Description = "Transfer-From: xx-xxxx-xxxxxx3-30 Credit Transfer xx5504 A/C: xx-xxxx-xxxxxx3-30  On Tue, 28 Jun at 12:55am", RunningBalance = 9.21, TransactionDate = new DateTime(2016,6,28)},
                     new Record {Amount = -1, Description = "Other Bank ATM Fee", RunningBalance = 7.21, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = -60, Description = "EFTPOS-Skycity - Diamond Ca Card number: 4xxx **** **** 5239 On Mon, 27 Jun at 11:51pm", RunningBalance = 8.21, TransactionDate = new DateTime(2016,6,27)},
@@ -1723,7 +1725,7 @@ new CodeData() { Code = "KQDMFX", Records = new List<Record>() {
                     new Record {Amount = 640, Description = "Bill Payment-Pasifika Ece Allianc Apa Nofu On Wed, 30 Mar at 12:00am", RunningBalance = 1329.48, TransactionDate = new DateTime(2016,3,30)},
 
 }},
-new CodeData() { Code = "XRCYSW", Records = new List<Record>() {
+new CodeData() { Code = "XRCYSW", Records = new List<IRecord>() {
                     new Record {Amount = -9.97, Description = "CARD 4101  Uber BVhelp.uber.co", RunningBalance = -1919.44, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = -7.91, Description = "CARD 4101  Uber BVhelp.uber.co", RunningBalance = -1909.47, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = -31.05, Description = "CARD 4101  GASMT EDEN", RunningBalance = -1901.56, TransactionDate = new DateTime(2016,6,27)},
@@ -2072,7 +2074,7 @@ new CodeData() { Code = "XRCYSW", Records = new List<Record>() {
                     new Record {Amount = -2.4, Description = "OVERDRAFT FACILITY FEE", RunningBalance = -2001.85, TransactionDate = new DateTime(2016,4,2)},
 
 }},
-new CodeData() { Code = "AQD4HE", Records = new List<Record>() {
+new CodeData() { Code = "AQD4HE", Records = new List<IRecord>() {
                     new Record {Amount = -24.8, Description = "CARD 0105  NOODLE CANTEEN WHANGAREIWHANGAREI NZ", RunningBalance = -972.74, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = 37.42, Description = "FN TRANSFER  EX xx-xxxx- xxxxxx6-51", RunningBalance = -947.94, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = 40, Description = "FN TRANSFER  EX xx-xxxx- xxxxxx6-51", RunningBalance = -985.36, TransactionDate = new DateTime(2016,6,27)},
@@ -2349,7 +2351,7 @@ new CodeData() { Code = "AQD4HE", Records = new List<Record>() {
                     new Record {Amount = -14.59, Description = "CARD 0105  COUNTDOWN PAIHIAWAITANGI NZ", RunningBalance = -475.070000000001, TransactionDate = new DateTime(2016,3,30)},
 
 }},
-new CodeData() { Code = "YDX5JP", Records = new List<Record>() {
+new CodeData() { Code = "YDX5JP", Records = new List<IRecord>() {
                     new Record {Amount = -0.5, Description = "TO xxxx-xxxxxx7-00", RunningBalance = 0, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = 3.5, Description = "From xxxx-xxxxxx7-00", RunningBalance = 0, TransactionDate = new DateTime(2016,6,15)},
                     new Record {Amount = -3, Description = "Transaction charge", RunningBalance = -3.5, TransactionDate = new DateTime(2016,6,14)},
@@ -2365,7 +2367,7 @@ new CodeData() { Code = "YDX5JP", Records = new List<Record>() {
                     new Record {Amount = 0.02, Description = "Credit Interest", RunningBalance = -0.459999999999994, TransactionDate = new DateTime(2016,3,31)},
 
 }},
-new CodeData() { Code = "SNCT7W", Records = new List<Record>() {
+new CodeData() { Code = "SNCT7W", Records = new List<IRecord>() {
                     new Record {Amount = -23.8, Description = "MCDONALDS HORNBY", RunningBalance = 36.85, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = -15, Description = "TECHPOINT HORNBY", RunningBalance = 36.85, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = -3.7, Description = "MOBIL BEALEY AVE", RunningBalance = 36.85, TransactionDate = new DateTime(2016,6,26)},
@@ -2733,7 +2735,7 @@ new CodeData() { Code = "SNCT7W", Records = new List<Record>() {
                     new Record {Amount = 170, Description = "Stenton S L", RunningBalance = -288.7, TransactionDate = new DateTime(2016,3,30)},
 
 }},
-new CodeData() { Code = "P9LZPQ", Records = new List<Record>() {
+new CodeData() { Code = "P9LZPQ", Records = new List<IRecord>() {
                     new Record {Amount = -81.2, Description = "LOAN REPAYMENT  xx-xxxx-xxxxxx1-91 004INTEREST", RunningBalance = -475.04, TransactionDate = new DateTime(2016,6,23)},
                     new Record {Amount = -64.92, Description = "LOAN REPAYMENT  xx-xxxx-xxxxxx1-91 004PRINCIPAL", RunningBalance = -393.84, TransactionDate = new DateTime(2016,6,23)},
                     new Record {Amount = -200, Description = "FCxx-xxxx-xxxxxx9-05  a", RunningBalance = -328.92, TransactionDate = new DateTime(2016,6,23)},
@@ -3000,7 +3002,7 @@ new CodeData() { Code = "P9LZPQ", Records = new List<Record>() {
                     new Record {Amount = -8.8, Description = "CARD 4071  TANK JUICE TAKAPUNAAUCKLAND", RunningBalance = 1036.61, TransactionDate = new DateTime(2016,3,29)},
 
 }},
-new CodeData() { Code = "RE85MC", Records = new List<Record>() {
+new CodeData() { Code = "RE85MC", Records = new List<IRecord>() {
                     new Record {Amount = 10, Description = "Payment-White T K H Efatas Gift On Fri, 24 Jun at 3:19pm", RunningBalance = -676.68, TransactionDate = new DateTime(2016,6,24)},
                     new Record {Amount = -100, Description = "Automatic Payment-Online Savings A/C: xx-xxxx-xxxxxx1-46  On Thu, 23 Jun at 10:09pm", RunningBalance = -676.68, TransactionDate = new DateTime(2016,6,23)},
                     new Record {Amount = -100, Description = "Automatic Payment-Online Savings A/C: xx-xxxx-xxxxxx1-46  On Wed, 22 Jun at 10:09pm", RunningBalance = -576.68, TransactionDate = new DateTime(2016,6,22)},
@@ -3113,7 +3115,7 @@ new CodeData() { Code = "RE85MC", Records = new List<Record>() {
                     new Record {Amount = -10, Description = "Bank Fee-Visa Debit Card Fee On Mon, 23 May at 10:35pm", RunningBalance = -4.44089209850063E-13, TransactionDate = new DateTime(2016,5,23)},
 
 }},
-new CodeData() { Code = "TS35GJ", Records = new List<Record>() {
+new CodeData() { Code = "TS35GJ", Records = new List<IRecord>() {
                     new Record {Amount = -69.61, Description = "COUNTDOWN STRATFORD", RunningBalance = 87.71, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = -2.9, Description = "MAINLAND PRODUCTS", RunningBalance = 87.71, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = -14.2, Description = "ELTHAM DAIRY &amp; LOTTO", RunningBalance = 87.71, TransactionDate = new DateTime(2016,6,27)},
@@ -3346,14 +3348,14 @@ new CodeData() { Code = "TS35GJ", Records = new List<Record>() {
                     new Record {Amount = 200, Description = "From xxxx-xxxxxx1-01", RunningBalance = 523.8, TransactionDate = new DateTime(2016,3,29)},
 
 }},
-new CodeData() { Code = "RD4DDV", Records = new List<Record>() {
+new CodeData() { Code = "RD4DDV", Records = new List<IRecord>() {
                     new Record {Amount = -15, Description = "Unarranged Overdraft", RunningBalance = 25.24, TransactionDate = new DateTime(2016,5,31)},
                     new Record {Amount = -0.23, Description = "Interest", RunningBalance = 40.24, TransactionDate = new DateTime(2016,5,31)},
                     new Record {Amount = -0.01, Description = "Interest", RunningBalance = 40.47, TransactionDate = new DateTime(2016,4,29)},
                     new Record {Amount = -10, Description = "Debit", RunningBalance = 40.48, TransactionDate = new DateTime(2016,4,27)},
 
 }},
-new CodeData() { Code = "REMG5V", Records = new List<Record>() {
+new CodeData() { Code = "REMG5V", Records = new List<IRecord>() {
                     new Record {Amount = -42.93, Description = "Cash Converters", RunningBalance = -40.7, TransactionDate = new DateTime(2016,6,22)},
                     new Record {Amount = -500, Description = "Wanganui WBC ATM", RunningBalance = 2.23, TransactionDate = new DateTime(2016,6,22)},
                     new Record {Amount = -7.45, Description = "BP Connect Wanganui", RunningBalance = 502.23, TransactionDate = new DateTime(2016,6,22)},
@@ -3500,7 +3502,7 @@ new CodeData() { Code = "REMG5V", Records = new List<Record>() {
                     new Record {Amount = -26.06, Description = "CC Finance NZ LP", RunningBalance = -26.1699999999998, TransactionDate = new DateTime(2016,3,29)},
 
 }},
-new CodeData() { Code = "WVBBKJ", Records = new List<Record>() {
+new CodeData() { Code = "WVBBKJ", Records = new List<IRecord>() {
                     new Record {Amount = -34, Description = "Visa Purchase-Www Thepalac Card number: 4xxx **** **** 8239 On Fri, 24 Jun at 11:53pm", RunningBalance = 2.21, TransactionDate = new DateTime(2016,6,24)},
                     new Record {Amount = -15, Description = "EFTPOS-Mobil Church St Card number: 4xxx **** **** 8239 On Fri, 24 Jun at 12:12pm", RunningBalance = 36.21, TransactionDate = new DateTime(2016,6,24)},
                     new Record {Amount = -21, Description = "Visa Purchase-Www Thepalac Card number: 4xxx **** **** 8239 On Fri, 24 Jun at 11:53pm", RunningBalance = 36.21, TransactionDate = new DateTime(2016,6,24)},
@@ -3727,7 +3729,7 @@ new CodeData() { Code = "WVBBKJ", Records = new List<Record>() {
                     new Record {Amount = -4, Description = "Visa Purchase-Nz Transport Card number: 4xxx **** **** 8239 On Tue, 29 Mar at 12:00am", RunningBalance = 27.9999999999985, TransactionDate = new DateTime(2016,3,29)},
 
 }},
-new CodeData() { Code = "DBLAAY", Records = new List<Record>() {
+new CodeData() { Code = "DBLAAY", Records = new List<IRecord>() {
                     new Record {Amount = -37, Description = "Youngs Service Centr", RunningBalance = -19.2, TransactionDate = new DateTime(2016,6,22)},
                     new Record {Amount = -17.8, Description = "Msia &amp; Spore Foods", RunningBalance = 17.8, TransactionDate = new DateTime(2016,6,22)},
                     new Record {Amount = -5, Description = "Shop at Home", RunningBalance = 35.6, TransactionDate = new DateTime(2016,6,22)},
@@ -3933,7 +3935,7 @@ new CodeData() { Code = "DBLAAY", Records = new List<Record>() {
                     new Record {Amount = 220.09, Description = "W&amp;I incl FTC$350.49", RunningBalance = 221.19, TransactionDate = new DateTime(2016,3,29)},
 
 }},
-new CodeData() { Code = "5KX46J", Records = new List<Record>() {
+new CodeData() { Code = "5KX46J", Records = new List<IRecord>() {
                     new Record {Amount = -200, Description = "TO xxxx-xxxxxx1-00", RunningBalance = 0, TransactionDate = new DateTime(2016,6,26)},
                     new Record {Amount = -93, Description = "TO xxxx-xxxxxx1-00", RunningBalance = 0, TransactionDate = new DateTime(2016,6,25)},
                     new Record {Amount = -7, Description = "Transaction charge", RunningBalance = 0, TransactionDate = new DateTime(2016,6,24)},
@@ -3975,7 +3977,7 @@ new CodeData() { Code = "5KX46J", Records = new List<Record>() {
                     new Record {Amount = 150, Description = "From xxxx-xxxxxx1-00", RunningBalance = -144, TransactionDate = new DateTime(2016,3,29)},
 
 }},
-new CodeData() { Code = "3ALMJH", Records = new List<Record>() {
+new CodeData() { Code = "3ALMJH", Records = new List<IRecord>() {
                     new Record {Amount = -50, Description = "1090LKE", RunningBalance = 2.07, TransactionDate = new DateTime(2016,6,25)},
                     new Record {Amount = -500, Description = "1090Lke", RunningBalance = 2.07, TransactionDate = new DateTime(2016,6,23)},
                     new Record {Amount = -20, Description = "4060Myra", RunningBalance = 2.07, TransactionDate = new DateTime(2016,6,23)},
@@ -4060,7 +4062,7 @@ new CodeData() { Code = "3ALMJH", Records = new List<Record>() {
                     new Record {Amount = 40, Description = "L K Eastwick", RunningBalance = -525.48, TransactionDate = new DateTime(2016,3,29)},
 
 }},
-new CodeData() { Code = "YYN3ME", Records = new List<Record>() {
+new CodeData() { Code = "YYN3ME", Records = new List<IRecord>() {
                     new Record {Amount = -140, Description = "MB TRANSFER  TO xx-xxxx-xxxxxx4-00", RunningBalance = -499.81, TransactionDate = new DateTime(2016,6,21)},
                     new Record {Amount = -114.83, Description = "LES MILLS BRITOMART  DDPAYxxx3989", RunningBalance = -359.81, TransactionDate = new DateTime(2016,6,20)},
                     new Record {Amount = -360, Description = "MB TRANSFER  TO xx-xxxx-xxxxxx4-00", RunningBalance = -244.98, TransactionDate = new DateTime(2016,6,20)},
@@ -4214,7 +4216,7 @@ new CodeData() { Code = "YYN3ME", Records = new List<Record>() {
                     new Record {Amount = -2, Description = "OVERDRAFT FACILITY FEE", RunningBalance = -543.500000000001, TransactionDate = new DateTime(2016,4,2)},
 
 }},
-new CodeData() { Code = "AU22WY", Records = new List<Record>() {
+new CodeData() { Code = "AU22WY", Records = new List<IRecord>() {
                     new Record {Amount = -1, Description = "Payment-Poli Holdings xxxxxxxx0083 A/C: xx-xxxx-xxxxxx4-00  On Fri, 24 Jun at 2:03pm", RunningBalance = 0, TransactionDate = new DateTime(2016,6,24)},
                     new Record {Amount = -0.11, Description = "Payment-Poli Fb Fb Fb A/C: xx-xxxx-xxxxxx4-00  On Fri, 24 Jun at 3:33pm", RunningBalance = 0, TransactionDate = new DateTime(2016,6,24)},
                     new Record {Amount = 1, Description = "Transfer-From: xx-xxxx-xxxxxx3-50 Credit Transfer xx5942 A/C: xx-xxxx-xxxxxx3-50  On Fri, 24 Jun at 1:59pm", RunningBalance = 0, TransactionDate = new DateTime(2016,6,24)},
@@ -4470,7 +4472,7 @@ new CodeData() { Code = "AU22WY", Records = new List<Record>() {
                     new Record {Amount = 70, Description = "Credit-W&amp;I Benefit T Collins xxxxxxxx8349 On Tue, 29 Mar at 12:00am", RunningBalance = 216.89, TransactionDate = new DateTime(2016,3,29)},
 
 }},
-new CodeData() { Code = "Y9K39S", Records = new List<Record>() {
+new CodeData() { Code = "Y9K39S", Records = new List<IRecord>() {
                     new Record {Amount = -15, Description = "DD DISHONOUR FEE", RunningBalance = -4.89, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = 0, Description = "For $67.04 to Southern Cross Healt 24 JUN 16", RunningBalance = 10.11, TransactionDate = new DateTime(2016,6,27)},
                     new Record {Amount = -14, Description = "POS W/D SANDRINGHAM L-18:16", RunningBalance = 10.11, TransactionDate = new DateTime(2016,6,26)},
@@ -4637,7 +4639,7 @@ new CodeData() { Code = "Y9K39S", Records = new List<Record>() {
                     new Record {Amount = -13, Description = "PAY Megan x", RunningBalance = 1.7300000000005, TransactionDate = new DateTime(2016,3,29)},
 
 }},
-new CodeData() { Code = "Y5U3FQ", Records = new List<Record>() {
+new CodeData() { Code = "Y5U3FQ", Records = new List<IRecord>() {
                     new Record {Amount = -20, Description = "Cashflow Wdl W Eltham", RunningBalance = 3.65, TransactionDate = new DateTime(2016,6,24)},
                     new Record {Amount = -2.6, Description = "ELTHAM DAIRY &amp; LOTTO Purchase", RunningBalance = 23.65, TransactionDate = new DateTime(2016,6,24)},
                     new Record {Amount = -20, Description = "Cashflow Wdl W Eltham", RunningBalance = 26.25, TransactionDate = new DateTime(2016,6,24)},
@@ -4978,7 +4980,7 @@ new CodeData() { Code = "Y5U3FQ", Records = new List<Record>() {
                     new Record {Amount = -3.5, Description = "CR DAIRY Purchase", RunningBalance = 1066.76, TransactionDate = new DateTime(2016,3,29)},
 
 }},
-new CodeData() { Code = "LF52WF", Records = new List<Record>() {
+new CodeData() { Code = "LF52WF", Records = new List<IRecord>() {
                     new Record {Amount = 79, Description = "MB TRANSFER  EX xx-xxxx-xxxxxx0-50", RunningBalance = 0.32, TransactionDate = new DateTime(2016,6,23)},
                     new Record {Amount = -11.34, Description = "SOVEREIGN  SOVEREIGNASBASBInsurancePLxxxxxx3-01", RunningBalance = -78.68, TransactionDate = new DateTime(2016,6,17)},
                     new Record {Amount = -31.33, Description = "LOAN REPAYMENT  xx-xxxx-xxxxxx0-91 003INTEREST", RunningBalance = -67.34, TransactionDate = new DateTime(2016,6,17)},
@@ -5024,7 +5026,7 @@ new CodeData() { Code = "LF52WF", Records = new List<Record>() {
                     new Record {Amount = -34.71, Description = "LOAN REPAYMENT  xx-xxxx-xxxxxx0-91 003PRINCIPAL", RunningBalance = -34.55, TransactionDate = new DateTime(2016,3,29)},
 
 }},
-new CodeData() { Code = "AK62D9", Records = new List<Record>() {
+new CodeData() { Code = "AK62D9", Records = new List<IRecord>() {
                     new Record {Amount = -100, Description = "ATM W/D BP 2 GO CLIVE-12:51", RunningBalance = 6.12, TransactionDate = new DateTime(2016,6,26)},
                     new Record {Amount = -16.8, Description = "BP 2GO CLIVE CLIVE", RunningBalance = 106.12, TransactionDate = new DateTime(2016,6,25)},
                     new Record {Amount = -6, Description = "CALTEX OMAHU ROAD HASTINGS", RunningBalance = 122.92, TransactionDate = new DateTime(2016,6,25)},
@@ -5280,7 +5282,7 @@ new CodeData() { Code = "AK62D9", Records = new List<Record>() {
                     new Record {Amount = 405.38, Description = "Direct Credit ALLIED WORKF ALLIED WORK HAWKE Ref: ALLIED WORKF ALLIED WORK HAWKE", RunningBalance = 406.22, TransactionDate = new DateTime(2016,3,30)},
 
 }},
-new CodeData() { Code = "SBQ65G", Records = new List<Record>() {
+new CodeData() { Code = "SBQ65G", Records = new List<IRecord>() {
                     new Record {Amount = -4.8, Description = "POS W/D BP CONNECT RO-10:55", RunningBalance = 0.78, TransactionDate = new DateTime(2016,6,26)},
                     new Record {Amount = 1.57, Description = "TRANSFER FROM J M GRIGG - 02 Transfer To J M GRIGG", RunningBalance = 5.58, TransactionDate = new DateTime(2016,6,26)},
                     new Record {Amount = -6.99, Description = "POS W/D PAK N SAVE RI-19:05", RunningBalance = 4.01, TransactionDate = new DateTime(2016,6,24)},
@@ -5528,7 +5530,7 @@ new CodeData() { Code = "SBQ65G", Records = new List<Record>() {
                     new Record {Amount = 2120.03, Description = "Automatic Payment WAGES CEQUENT PROJECTS CEQUENT PROJECT Ref: WAGES CEQUENT PROJECTS CEQUENT PROJECT", RunningBalance = 2120.98, TransactionDate = new DateTime(2016,3,29)},
 
 }},
-new CodeData() { Code = "XX3ZDK", Records = new List<Record>() {
+new CodeData() { Code = "XX3ZDK", Records = new List<IRecord>() {
                     new Record {Amount = -2, Description = "YouMoney   INTERNET XFR", RunningBalance = -350, TransactionDate = new DateTime(2016,6,24)},
                     new Record {Amount = 109.89, Description = "YNPREMFN0952 DISHONOUR-03 YNxxx1388            2", RunningBalance = -348, TransactionDate = new DateTime(2016,6,21)},
                     new Record {Amount = -109.89, Description = "YNPREMFN0952 PREMASB ACB YNxxx1388            2", RunningBalance = -457.89, TransactionDate = new DateTime(2016,6,20)},
@@ -5637,7 +5639,7 @@ new CodeData() { Code = "XX3ZDK", Records = new List<Record>() {
                     new Record {Amount = 40, Description = "personal other   INTERNET XFR", RunningBalance = 41.8199999999997, TransactionDate = new DateTime(2016,3,30)},
 
 }},
-new CodeData() { Code = "C38DAT", Records = new List<Record>() {
+new CodeData() { Code = "C38DAT", Records = new List<IRecord>() {
                     new Record {Amount = -22, Description = "HOYTS SYLVIA PARK  xxxxxxx7181 MT WELLINGTO xxxxxxxx1228", RunningBalance = 18.06, TransactionDate = new DateTime(2016,6,15)},
                     new Record {Amount = -18.9, Description = "THE CHEESECAKE SHOP  xxxxxxx7181 AUCKLAND xxxxxxxx1258", RunningBalance = 40.06, TransactionDate = new DateTime(2016,6,15)},
                     new Record {Amount = -19.5, Description = "HOYTS SYLVIA PARK  xxxxxxx7181 MT WELLINGTO xxxxxxxx1252", RunningBalance = 58.96, TransactionDate = new DateTime(2016,6,15)},

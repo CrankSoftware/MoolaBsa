@@ -1,6 +1,6 @@
 ﻿namespace Moola.Bsa.Logic.Services
 {
-    class Analyser
+    public class Analyser
     {
     }
 }

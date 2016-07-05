@@ -5,7 +5,7 @@ using Moola.Bsa.Logic.Models.Inputs;
 
 namespace Moola.Bsa.Logic.Models.Outputs
 {
-    public class AccountConductOutput: IMostRecentDate, IDateRangeInDays, ISum, ICount, IRecords
+    public class AccountConductOutput: IMostRecentDate, IDateRangeInDays, ISum, ICount
     {
         /// <summary>
         /// Output 1
@@ -26,6 +26,6 @@ namespace Moola.Bsa.Logic.Models.Outputs
         /// <summary>
         /// The matching records
         /// </summary>
-        public List<Record> Records { get; set; }
+        public List<IRecord> Records { get; set; }
     }
 }

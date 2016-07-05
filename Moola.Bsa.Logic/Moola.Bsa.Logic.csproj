@@ -42,9 +42,10 @@
   <ItemGroup>
     <Compile Include="Enumerations\FilterPolarity.cs" />
     <Compile Include="Enumerations\FilterType.cs" />
-    <Compile Include="Interfaces\IMostRecentAmount.cs" />
-    <Compile Include="Interfaces\IMostRecentDate.cs" />
-    <Compile Include="Interfaces\IDateRangeInDays.cs" />
+    <Compile Include="Interfaces\Analyser\IAnalyser.cs" />
+    <Compile Include="Interfaces\Configuration\IMostRecentAmount.cs" />
+    <Compile Include="Interfaces\Configuration\IMostRecentDate.cs" />
+    <Compile Include="Interfaces\Configuration\IDateRangeInDays.cs" />
     <Compile Include="Interfaces\ICount.cs" />
     <Compile Include="Interfaces\ISum.cs" />
     <Compile Include="Interfaces\IRecords.cs" />
@@ -54,14 +55,20 @@
     <Compile Include="Models\Inputs\FinanceWithdrawalsInput.cs" />
     <Compile Include="Models\Inputs\GamblingInput.cs" />
     <Compile Include="Models\Inputs\AccountConductInput.cs" />
-    <Compile Include="Models\Inputs\BaseInput.cs" />
-    <Compile Include="Models\Inputs\Record.cs" />
+    <Compile Include="Abstract\BaseInput.cs" />
+    <Compile Include="Interfaces\IRecord.cs" />
     <Compile Include="Models\Outputs\AccountConductGroupSummary.cs" />
     <Compile Include="Models\Outputs\AccountConductOutput.cs" />
+    <Compile Include="Models\Record.cs" />
+    <Compile Include="Models\BankRecords.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Analyser.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interfaces\Input\" />
+    <Folder Include="Interfaces\Model\" />
+    <Folder Include="Interfaces\Output\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

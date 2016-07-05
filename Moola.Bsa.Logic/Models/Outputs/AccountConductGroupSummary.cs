@@ -1,20 +1,9 @@
-﻿using System.Collections.Generic;
-using Moola.Bsa.Logic.Interfaces;
-using Moola.Bsa.Logic.Models.Inputs;
+﻿using Moola.Bsa.Logic.Abstract;
 
 namespace Moola.Bsa.Logic.Models.Outputs
 {
-    public class AccountConductGroupSummary : ICount, ISum
+    public class AccountConductGroupSummary : BaseModelOutput
     {
-        public string Description { get; set; }
 
-        public int Count { get; set; }
-
-        public double Sum { get; set; }
-        
-        /// <summary>
-        /// The matching records
-        /// </summary>
-        public List<IRecord> Records { get; set; }
     }
 }

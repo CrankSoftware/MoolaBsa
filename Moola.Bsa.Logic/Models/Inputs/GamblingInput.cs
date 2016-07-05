@@ -3,7 +3,7 @@ using Moola.Bsa.Logic.Enumerations;
 
 namespace Moola.Bsa.Logic.Models.Inputs
 {
-    public class GamblingInput : BaseInput
+    public class GamblingInput : BaseModelInput
     {
         public GamblingInput()
         {

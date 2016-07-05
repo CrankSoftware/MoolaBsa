@@ -1,4 +1,5 @@
-﻿using Moola.Bsa.Logic.Enumerations;
+﻿using Moola.Bsa.Logic.Abstract;
+using Moola.Bsa.Logic.Enumerations;
 
 namespace Moola.Bsa.Logic.Models.Inputs
 {

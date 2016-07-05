@@ -4,7 +4,7 @@ using Moola.Bsa.Logic.Models.Inputs;
 
 namespace Moola.Bsa.Logic.Models.Outputs
 {
-    public class AccountConductGroupSummary : ICount, ISum, IRecords
+    public class AccountConductGroupSummary : ICount, ISum
     {
         public string Description { get; set; }
 
@@ -15,6 +15,6 @@ namespace Moola.Bsa.Logic.Models.Outputs
         /// <summary>
         /// The matching records
         /// </summary>
-        public List<Record> Records { get; set; }
+        public List<IRecord> Records { get; set; }
     }
 }

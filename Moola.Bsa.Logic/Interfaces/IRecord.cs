@@ -29,5 +29,10 @@ namespace Moola.Bsa.Logic.Interfaces
         /// </summary>
         string Description { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        string DistinctDescription { get; set; }
+
     }
 }

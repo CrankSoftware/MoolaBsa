@@ -12,9 +12,9 @@ using Moola.Bsa.Logic.Models.Inputs;
 
 namespace Moola.Bsa.Logic.Models
 {
-    public class AccountConductModel : IModel
+    public class AccountConductModel : BaseModel
     {
-        public string ModelName { get; private set; }
+        public override  string ModelName { get; protected set; }
         private static IModel _instance;
         public static IModel Instance
         {
@@ -33,7 +33,7 @@ namespace Moola.Bsa.Logic.Models
             ModelName = "AccountConductModel";
         }
 
-        public IEnumerable<IModelOutput> Process(IModelInput input)
+        public override IEnumerable<IModelOutput> Process(IModelInput input)
         {
             var result = new List<IModelOutput>();
             var accountConductInput = input as AccountConductInput;
@@ -53,19 +53,20 @@ namespace Moola.Bsa.Logic.Models
                 throw new BsaInputParameterException("The FilterType value must be FilterIn");
             }
 
+            if (accountConductInput.FilterPolarity != FilterPolarity.NegativeValues)
+            {
+                throw new BsaInputParameterException("The FilterPolarity value for this model must be Nagative"); ;
+            }
+
             var leastDateTime = DateTime.UtcNow.AddDays(-dateRangeInDays);
 
             var recordsFilteredByDate =
-                accountConductInput.Records.Where(record => DateTime.Compare(record.TransactionDate, leastDateTime) > 0)
-                                   .OrderBy(record=>record.TransactionDate);
+                accountConductInput.BankRecords.Records.Where(record => DateTime.Compare(record.TransactionDate, leastDateTime) >= 0 && record.Amount<0)
+                                   .OrderBy(record=>record.Description);
             
             var matchedRecords = new Dictionary<string,List<IRecord>>();
             foreach (var record in recordsFilteredByDate)
             {
-                if (accountConductInput.FilterPolarity == FilterPolarity.NegativeValues && record.Amount > 0)
-                {
-                    continue;
-                }
 
                 foreach (var term in accountConductInput.FilterTerms)
                 {
@@ -84,7 +85,7 @@ namespace Moola.Bsa.Logic.Models
                 }
             }
 
-
+            //var summary
             //Output result 1
 
             //Output result 2

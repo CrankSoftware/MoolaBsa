@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Moola.Bsa.Logic.Interfaces.Output
 {
-    public interface IModelOutput
+    public interface IModelOutput:ICount,ISum
     {
         string Description { get; set; }
 

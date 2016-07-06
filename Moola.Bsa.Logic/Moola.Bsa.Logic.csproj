@@ -58,6 +58,7 @@
     <Compile Include="Interfaces\Model\IModel.cs" />
     <Compile Include="Interfaces\Output\IModelOutput.cs" />
     <Compile Include="Models\AccountConductModel.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Inputs\FinanceDepositsInput.cs" />
     <Compile Include="Models\Inputs\IncomeInput.cs" />
     <Compile Include="Models\Inputs\ForeignExchangeInput.cs" />

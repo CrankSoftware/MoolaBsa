@@ -1,6 +1,6 @@
 ﻿namespace Moola.Bsa.Logic.Interfaces
 {
-    interface ISum
+    public interface ISum
     {
         double Sum { get; set; }
     }

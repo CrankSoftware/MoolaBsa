@@ -12,6 +12,19 @@ namespace Moola.Bsa.Logic.Services
 {
     public class Analyzer : IAnalyzer
     {
+        private static Analyzer _instance;
+        public static Analyzer Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new Analyzer();
+                }
+                return _instance ?? new Analyzer();
+            }
+        }
+
         public IEnumerable<IAnalyzerOutput> Execute(IAnalyzerInput input)
         {
             if (input == null)

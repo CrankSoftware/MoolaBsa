@@ -13,6 +13,8 @@ namespace Moola.Bsa.Logic.Models
 
         public string Description { get; set; }
 
+        public string DistinctDescription { get; set; }
+
         public double RunningBalance { get; set; }
 
         public DateTime TransactionDate { get; set; }

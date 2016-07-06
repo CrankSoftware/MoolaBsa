@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using Moola.Bsa.Logic.Models.Inputs;
 using Moola.Bsa.Logic.Models;

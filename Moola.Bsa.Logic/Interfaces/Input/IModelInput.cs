@@ -19,7 +19,7 @@ namespace Moola.Bsa.Logic.Interfaces.Input
         /// <summary>
         /// Bank account records for input
         /// </summary>
-        List<IRecord> Records { get; set; }
+        IRecords BankRecords { get; set; }
 
         /// <summary>
         /// The terms by which to filter the records

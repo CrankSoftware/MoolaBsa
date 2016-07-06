@@ -1,6 +1,6 @@
 ﻿namespace Moola.Bsa.Logic.Interfaces
 {
-    interface ICount
+    public interface ICount
     {
         int Count { get; set; }
     }

@@ -10,7 +10,7 @@ namespace Moola.Bsa.Logic.Abstract
 
         public int DateRangeInDays { get; set; }
 
-        public List<IRecord> Records { get; set; }
+        public IRecords BankRecords { get; set; }
 
         public List<string> FilterTerms { get; set; }
 

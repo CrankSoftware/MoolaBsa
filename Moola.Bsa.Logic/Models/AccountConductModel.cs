@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Moola.Bsa.Logic.Enumerations;
 using Moola.Bsa.Logic.Exceptions;
+using Moola.Bsa.Logic.ExtensionMethods;
 using Moola.Bsa.Logic.Interfaces;
 using Moola.Bsa.Logic.Interfaces.Input;
 using Moola.Bsa.Logic.Interfaces.Output;
@@ -54,6 +55,16 @@ namespace Moola.Bsa.Logic.Models
             if (accountConductInput.FilterPolarity != FilterPolarity.NegativeValues)
             {
                 throw new BsaInputParameterException("The FilterPolarity value for this model must be Nagative");
+            }
+
+            if (input.BankRecords == null)
+            {
+                throw new BsaInputParameterException("The BankRecords value cannot be null");
+            }
+
+            if (!input.BankRecords.Records.AnySave())
+            {
+                throw new BsaInputParameterException("The records value cannot be null or empty");
             }
 
             var leastDateTime = DateTime.UtcNow.AddDays(-dateRangeInDays);

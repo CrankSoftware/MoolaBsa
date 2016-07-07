@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Moola.Bsa.Logic.ExtensionMethods;
 using Moola.Bsa.Logic.Models;
 using Moola.Bsa.Logic.Models.Inputs;
+using Moola.Bsa.Logic.Models.Outputs;
 
 namespace Moola.Bsa.Logic.Services.Tests
 {
@@ -31,6 +32,8 @@ namespace Moola.Bsa.Logic.Services.Tests
 
             //Test Singel One
             var outputs = Analyzer.Instance.Execute(inputs.FirstOrDefault(i=>i.ModelInput.BankRecords.Code== "WVBBKJ"));
+            Assert.IsTrue(outputs.FirstOrDefault().ModelOutput.Count==3);
+            Assert.IsTrue((outputs.FirstOrDefault().ModelOutput as AccountConductOverallSummary).AccountConductGroupSummaries.Count== 2);
             //Test Parallel
             var outputs2 = Analyzer.Instance.Execute(inputs);
             Assert.IsTrue(outputs.AnySave());

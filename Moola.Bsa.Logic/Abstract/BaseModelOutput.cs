@@ -10,7 +10,6 @@ namespace Moola.Bsa.Logic.Abstract
 {
     public abstract class BaseModelOutput:IModelOutput
     {
-        public string Description { get; set; }
 
         public int Count { get; set; }
 

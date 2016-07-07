@@ -2,19 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using Moola.Bsa.Logic.Enumerations;
 using Moola.Bsa.Logic.Exceptions;
 using Moola.Bsa.Logic.Interfaces;
 using Moola.Bsa.Logic.Interfaces.Input;
 using Moola.Bsa.Logic.Interfaces.Output;
 using Moola.Bsa.Logic.Models.Inputs;
+using Moola.Bsa.Logic.Models.Outputs;
 
 namespace Moola.Bsa.Logic.Models
 {
     public class AccountConductModel : BaseModel
     {
-        public override  string ModelName { get; protected set; }
         private static IModel _instance;
         public static IModel Instance
         {
@@ -33,9 +32,8 @@ namespace Moola.Bsa.Logic.Models
             ModelName = "AccountConductModel";
         }
 
-        public override IEnumerable<IModelOutput> Process(IModelInput input)
+        public override IModelOutput Analyze(IModelInput input)
         {
-            var result = new List<IModelOutput>();
             var accountConductInput = input as AccountConductInput;
             if (accountConductInput == null)
             {
@@ -55,7 +53,7 @@ namespace Moola.Bsa.Logic.Models
 
             if (accountConductInput.FilterPolarity != FilterPolarity.NegativeValues)
             {
-                throw new BsaInputParameterException("The FilterPolarity value for this model must be Nagative"); ;
+                throw new BsaInputParameterException("The FilterPolarity value for this model must be Nagative");
             }
 
             var leastDateTime = DateTime.UtcNow.AddDays(-dateRangeInDays);
@@ -70,27 +68,63 @@ namespace Moola.Bsa.Logic.Models
 
                 foreach (var term in accountConductInput.FilterTerms)
                 {
-                    if (record.Description.ToLowerInvariant().Contains(term.ToLowerInvariant()))
+                    var distinctMatchedDescription = GetMatchedDistinctDescription(record.Description, term);
+                    record.DistinctDescription = distinctMatchedDescription;
+                    if (!string.IsNullOrEmpty(distinctMatchedDescription))
                     {
-                        if (matchedRecords.ContainsKey(term))
+                        if (matchedRecords.ContainsKey(distinctMatchedDescription))
                         {
-                            matchedRecords[term].Add(record);
+                            matchedRecords[distinctMatchedDescription].Add(record);
                         }
                         else
                         {
-                            matchedRecords.Add(term,new List<IRecord>() {record});
+                            matchedRecords.Add(distinctMatchedDescription, new List<IRecord>() {record});
                         }
                         break;
                     }
                 }
             }
 
+            if (!matchedRecords.Any())
+            {
+                return null;
+            }
             //var summary
             //Output result 1
+            var groupSummaries = new List<AccountConductGroupSummary>();
+            foreach (var keyValuePair in matchedRecords)
+            {
+                var groupSummary = new AccountConductGroupSummary();
+                groupSummary.Records = keyValuePair.Value;
+                groupSummary.DistinctDescription = keyValuePair.Key;
+                groupSummary.Count = keyValuePair.Value.Count;
+                groupSummary.Sum = keyValuePair.Value.Sum(record => record.Amount);
+                groupSummaries.Add(groupSummary);
+            }
 
             //Output result 2
+            var allMatchedRecords = matchedRecords.Values.SelectMany(keyValue => keyValue).Where(value=>value!=null)
+                                        .OrderByDescending(record=>record.TransactionDate);
 
-            return result;
+            var overallSum = allMatchedRecords.Sum(record => record.Amount);
+            var overallCount = allMatchedRecords.Count();
+            var modeRecentRecord = allMatchedRecords.FirstOrDefault();
+            if (modeRecentRecord == null)
+            {
+                return null;
+            }
+            var overallSummary = new AccountConductOverallSummary();
+            overallSummary.AccountConductGroupSummaries = groupSummaries;
+            overallSummary.DateRangeInDays = input.DateRangeInDays;
+            overallSummary.MostRecentAmount = modeRecentRecord.Amount;
+            overallSummary.MostRecentDate = modeRecentRecord.TransactionDate;
+            overallSummary.DailySum = Math.Round(overallSum / input.DateRangeInDays,4);
+            overallSummary.DailyCount = Math.Round((double)overallCount / input.DateRangeInDays,4);
+            overallSummary.Sum = overallSum;
+            overallSummary.Count = overallCount;
+            overallSummary.Records = allMatchedRecords.ToList();
+            return overallSummary;
         }
     }
 }
+ 

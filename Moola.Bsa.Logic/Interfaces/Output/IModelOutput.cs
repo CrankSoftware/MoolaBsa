@@ -8,8 +8,6 @@ namespace Moola.Bsa.Logic.Interfaces.Output
 {
     public interface IModelOutput:ICount,ISum
     {
-        string Description { get; set; }
-
         int Count { get; set; }
 
         double Sum { get; set; }

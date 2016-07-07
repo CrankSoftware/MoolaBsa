@@ -11,6 +11,6 @@ namespace Moola.Bsa.Logic.Interfaces.Model
     public interface IModel
     {
         string ModelName { get; }
-        IEnumerable<IModelOutput> Process(IModelInput input);
+        IModelOutput Analyze(IModelInput input);
     }
 }

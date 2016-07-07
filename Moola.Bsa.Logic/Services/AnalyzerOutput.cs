@@ -14,9 +14,9 @@ namespace Moola.Bsa.Logic.Services
     {
         public IModel Model { get; private set; }
         
-        public IEnumerable<IModelOutput> ModelOutput { get; private set; }
+        public IModelOutput ModelOutput { get; private set; }
 
-        public AnalyzerOutput(IModel model, IEnumerable<IModelOutput> output)
+        public AnalyzerOutput(IModel model, IModelOutput output)
         {
             Model = model;
             ModelOutput = output;

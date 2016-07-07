@@ -68,7 +68,7 @@
     <Compile Include="Abstract\BaseModelInput.cs" />
     <Compile Include="Interfaces\IRecord.cs" />
     <Compile Include="Models\Outputs\AccountConductGroupSummary.cs" />
-    <Compile Include="Models\Outputs\AccountConductOutput.cs" />
+    <Compile Include="Models\Outputs\AccountConductOverallSummary.cs" />
     <Compile Include="Models\Record.cs" />
     <Compile Include="Models\BankRecords.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

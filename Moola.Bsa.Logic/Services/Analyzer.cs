@@ -45,7 +45,7 @@ namespace Moola.Bsa.Logic.Services
 
             Parallel.ForEach(inputs, input =>
             {
-                concurrentResult.Add(new AnalyzerOutput(input.Model, input.Model.Process(input.ModelInput)));
+                concurrentResult.Add(new AnalyzerOutput(input.Model, input.Model.Analyze(input.ModelInput)));
             });
             return concurrentResult;
         }

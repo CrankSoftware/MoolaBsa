@@ -11,6 +11,6 @@ namespace Moola.Bsa.Logic.Interfaces.Analyser
     public interface IAnalyzerOutput
     {
         IModel Model { get; }
-        IEnumerable<IModelOutput> ModelOutput { get; }
+        IModelOutput ModelOutput { get; }
     }
 }

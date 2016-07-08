@@ -10,6 +10,6 @@ namespace Moola.Bsa.Logic.Interfaces
     public interface IAnalyzer
     {
         IEnumerable<IAnalyzerOutput> Execute(IEnumerable<IAnalyzerInput> inputs);
-        IEnumerable<IAnalyzerOutput> Execute(IAnalyzerInput inputs);
+        IAnalyzerOutput Execute(IAnalyzerInput inputs);
     }
 }

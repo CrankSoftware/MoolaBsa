@@ -25,14 +25,14 @@ namespace Moola.Bsa.Logic.Services
             }
         }
 
-        public IEnumerable<IAnalyzerOutput> Execute(IAnalyzerInput input)
+        public IAnalyzerOutput Execute(IAnalyzerInput input)
         {
             if (input == null)
             {
-                return new List<IAnalyzerOutput>();
+                return null;
             }
 
-            return Execute(new List<IAnalyzerInput>() {input});
+            return new AnalyzerOutput(input.Model, input.Model.Analyze(input.ModelInput)); ;
         }
 
         public IEnumerable<IAnalyzerOutput> Execute(IEnumerable<IAnalyzerInput> inputs)

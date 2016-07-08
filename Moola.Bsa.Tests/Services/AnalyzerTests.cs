@@ -32,11 +32,11 @@ namespace Moola.Bsa.Logic.Services.Tests
 
             //Test Singel One
             var outputs = Analyzer.Instance.Execute(inputs.FirstOrDefault(i=>i.ModelInput.BankRecords.Code== "WVBBKJ"));
-            Assert.IsTrue(outputs.FirstOrDefault().ModelOutput.Count==3);
-            Assert.IsTrue((outputs.FirstOrDefault().ModelOutput as AccountConductOverallSummary).AccountConductGroupSummaries.Count== 2);
+            Assert.IsNotNull(outputs);
+            Assert.IsTrue(outputs.ModelOutput.Count==3);
+            Assert.IsTrue((outputs.ModelOutput as AccountConductOverallSummary).AccountConductGroupSummaries.Count== 2);
             //Test Parallel
             var outputs2 = Analyzer.Instance.Execute(inputs);
-            Assert.IsTrue(outputs.AnySave());
             Assert.IsTrue(outputs2.AnySave());
         }
     }

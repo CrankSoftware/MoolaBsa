@@ -7,11 +7,15 @@ using Moola.Bsa.Logic.Models.Outputs;
 using Moola.Bsa.Tests.TestData;
 using System.Collections.Generic;
 using System.Linq;
+using Moola.Bsa.Logic.Interfaces.Input;
+using Moola.Bsa.Logic.Interfaces.Output;
+using System;
 
 namespace Moola.Bsa.Logic.Models.Tests
 {
+
     [TestClass()]
-    public class AnalyzerTests
+    public class ModelTests
     {
         [TestMethod()]
         public void AccountConductModelTestSuccess()
@@ -88,6 +92,38 @@ namespace Moola.Bsa.Logic.Models.Tests
                 BankRecords = bankRecords
             };
             AccountConductModel.Instance.Analyze(input);
+        }
+
+        [TestMethod()]
+        public void GetMatchedDistinctDescriptionTest()
+        {
+            var testTerm = "XERfdsfaas wfsdfas";
+            var testDescription = "fasffwffasf XERfdsfaas wfsdfas fasfdafwfsdfasf";
+            var testResult = new ModelTestClass().GetMatchedDistinctDescription(testDescription,testTerm);
+            Assert.IsTrue(testResult== "fasffwffasf XERfdsfaas wfsdfas");
+
+            testResult = new ModelTestClass().GetMatchedDistinctDescription(testDescription, testTerm+"_xefdf");
+            Assert.IsFalse(testResult == "fasffwffasf XERfdsfaas wfsdfas");
+
+            testDescription = "fasffwffasf XERfdsfaas wfsdfas_xxee fasfdafwfsdfasf";
+            testResult = new ModelTestClass().GetMatchedDistinctDescription(testDescription, testTerm);
+            Assert.IsTrue(testResult == "fasffwffasf XERfdsfaas wfsdfas");
+        }
+
+
+        private class ModelTestClass :
+
+        BaseModel
+        {
+            public new string GetMatchedDistinctDescription(string description, string searchTerm)
+            {
+                return base.GetMatchedDistinctDescription(description, searchTerm); 
+            }
+
+            public override IModelOutput Analyze(IModelInput input)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Moola.Bsa.Logic.ExtensionMethods;
-using Moola.Bsa.Logic.Interfaces;
 using Moola.Bsa.Logic.Interfaces.Analyser;
 
 namespace Moola.Bsa.Logic.Services
@@ -32,18 +29,19 @@ namespace Moola.Bsa.Logic.Services
                 return null;
             }
 
-            return new AnalyzerOutput(input.Model, input.Model.Analyze(input.ModelInput)); ;
+            return new AnalyzerOutput(input.Model, input.Model.Analyze(input.ModelInput));
         }
 
         public IEnumerable<IAnalyzerOutput> Execute(IEnumerable<IAnalyzerInput> inputs)
         {
+            var analyzerInputs = inputs.ToList();
             ConcurrentBag<IAnalyzerOutput> concurrentResult = new ConcurrentBag<IAnalyzerOutput>();
-            if (!inputs.AnySave())
+            if (!analyzerInputs.AnySave())
             {
                 return new List<IAnalyzerOutput>();
             }
 
-            Parallel.ForEach(inputs, input =>
+            Parallel.ForEach(analyzerInputs, input =>
             {
                 concurrentResult.Add(new AnalyzerOutput(input.Model, input.Model.Analyze(input.ModelInput)));
             });

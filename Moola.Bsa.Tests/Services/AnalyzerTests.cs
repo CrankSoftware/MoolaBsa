@@ -1,17 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moola.Bsa.Logic.Services;
 using Moola.Bsa.Tests.TestData;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Moola.Bsa.Logic.ExtensionMethods;
 using Moola.Bsa.Logic.Models;
 using Moola.Bsa.Logic.Models.Inputs;
 using Moola.Bsa.Logic.Models.Outputs;
+using Moola.Bsa.Logic.Services;
 
-namespace Moola.Bsa.Logic.Services.Tests
+namespace Moola.Bsa.Tests.Services
 {
     [TestClass()]
     public class AnalyzerTests
@@ -34,6 +31,7 @@ namespace Moola.Bsa.Logic.Services.Tests
             var outputs = Analyzer.Instance.Execute(inputs.FirstOrDefault(i=>i.ModelInput.BankRecords.Code== "WVBBKJ"));
             Assert.IsNotNull(outputs);
             Assert.IsTrue(outputs.ModelOutput.Count==3);
+            Assert.IsNotNull((outputs.ModelOutput as AccountConductOverallSummary));
             Assert.IsTrue((outputs.ModelOutput as AccountConductOverallSummary).AccountConductGroupSummaries.Count== 2);
             //Test Parallel
             var outputs2 = Analyzer.Instance.Execute(inputs);

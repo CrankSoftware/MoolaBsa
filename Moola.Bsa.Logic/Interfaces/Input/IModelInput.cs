@@ -1,9 +1,5 @@
 ﻿using Moola.Bsa.Logic.Enumerations;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Moola.Bsa.Logic.Interfaces.Input
 {

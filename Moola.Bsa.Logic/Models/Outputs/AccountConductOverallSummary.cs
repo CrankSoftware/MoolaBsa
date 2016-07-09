@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Moola.Bsa.Logic.Interfaces;
 using Moola.Bsa.Logic.Abstract;
+using Moola.Bsa.Logic.Interfaces.Configuration;
 
 namespace Moola.Bsa.Logic.Models.Outputs
 {

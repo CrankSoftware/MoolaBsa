@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Moola.Bsa.Logic.Interfaces.Output
 {
     public interface IModelOutput:ICount,ISum
     {
-        int Count { get; set; }
-
-        double Sum { get; set; }
-
         /// <summary>
         /// The matching records
         /// </summary>

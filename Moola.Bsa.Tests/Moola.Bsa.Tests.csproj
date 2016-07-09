@@ -52,7 +52,6 @@
   <ItemGroup>
     <Compile Include="Models\ModelTests.cs" />
     <Compile Include="Services\AnalyzerTests.cs" />
-    <Compile Include="TestData\CodeData.cs" />
     <Compile Include="TestData\TestRecords.cs" />
     <Compile Include="TestDataGetter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

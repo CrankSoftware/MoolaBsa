@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moola.Bsa.Logic.Exceptions;
-using Moola.Bsa.Logic.ExtensionMethods;
-using Moola.Bsa.Logic.Models;
 using Moola.Bsa.Logic.Models.Inputs;
 using Moola.Bsa.Logic.Models.Outputs;
 using Moola.Bsa.Tests.TestData;
@@ -10,8 +8,9 @@ using System.Linq;
 using Moola.Bsa.Logic.Interfaces.Input;
 using Moola.Bsa.Logic.Interfaces.Output;
 using System;
+using Moola.Bsa.Logic.Models;
 
-namespace Moola.Bsa.Logic.Models.Tests
+namespace Moola.Bsa.Tests.Models
 {
 
     [TestClass()]
@@ -84,7 +83,7 @@ namespace Moola.Bsa.Logic.Models.Tests
         [ExpectedException(typeof(BsaInputParameterException))]
         public void AccountConductModelTestNullRecordsException()
         {
-            var bankRecords = new BankRecords();
+            var bankRecords = new BankData("fake");
             var input = new AccountConductInput()
             {
                 DateRangeInDays = 30,

@@ -1,9 +1,5 @@
 ﻿using Moola.Bsa.Logic.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Moola.Bsa.Logic.Models
 {
@@ -22,7 +18,7 @@ namespace Moola.Bsa.Logic.Models
 
         public override string ToString()
         {
-            return this.TransactionDate + ", " + this.Amount + ": " + this.Description;
+            return TransactionDate + ", " + Amount + ": " + Description;
         }
     }
 }

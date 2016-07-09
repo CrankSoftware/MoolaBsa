@@ -1,5 +1,4 @@
 ﻿using Moola.Bsa.Logic.Interfaces.Model;
-using System.Collections.Generic;
 using Moola.Bsa.Logic.Interfaces.Input;
 using Moola.Bsa.Logic.Interfaces.Output;
 using System;

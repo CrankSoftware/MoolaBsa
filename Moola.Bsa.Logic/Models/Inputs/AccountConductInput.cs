@@ -7,8 +7,8 @@ namespace Moola.Bsa.Logic.Models.Inputs
     {
         public AccountConductInput()
         {
-            this.FilterType = FilterType.FilterIn;
-            this.FilterPolarity = FilterPolarity.NegativeValues;
+            FilterType = FilterType.FilterIn;
+            FilterPolarity = FilterPolarity.NegativeValues;
         }
     }
 }

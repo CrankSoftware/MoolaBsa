@@ -1,4 +1,4 @@
-﻿namespace Moola.Bsa.Logic.Interfaces
+﻿namespace Moola.Bsa.Logic.Interfaces.Configuration
 {
     interface IDateRangeInDays
     {

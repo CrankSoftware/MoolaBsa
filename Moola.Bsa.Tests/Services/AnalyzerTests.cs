@@ -14,7 +14,7 @@ namespace Moola.Bsa.Tests.Services
     public class AnalyzerTests
     {
         [TestMethod()]
-        public void ExecuteTest()
+        public void ExecuteAccountConduceModelTest()
         {
             var testData = TestRecords.GetTestData();
             Assert.IsNotNull(testData);
@@ -33,6 +33,31 @@ namespace Moola.Bsa.Tests.Services
             Assert.IsTrue(outputs.ModelOutput.Count==3);
             Assert.IsNotNull((outputs.ModelOutput as AccountConductOverallSummary));
             Assert.IsTrue((outputs.ModelOutput as AccountConductOverallSummary).AccountConductGroupSummaries.Count== 2);
+            //Test Parallel
+            var outputs2 = Analyzer.Instance.Execute(inputs);
+            Assert.IsTrue(outputs2.AnySave());
+        }
+
+        [TestMethod()]
+        public void ExecuteGamblingModelTest()
+        {
+            var testData = TestRecords.GetTestData();
+            Assert.IsNotNull(testData);
+
+            var searchTerm = new List<string> { "Casino", "Digimedia", "Racing", "Seabrook", "Sky City", "Slots", "TAB", "ThePalac", "B365","Sportsbet" };
+            var inputs = testData.Select(records => new AnalyzerInput(GamblingModel.Instance, new GamblingInput()
+            {
+                DateRangeInDays = 90,
+                FilterTerms = searchTerm,
+                BankRecords = records
+            })).ToList();
+
+            //Test Singel One
+            var outputs = Analyzer.Instance.Execute(inputs.FirstOrDefault(i => i.ModelInput.BankRecords.Code == "RE85MC"));
+            Assert.IsNotNull(outputs);
+            Assert.IsTrue(outputs.ModelOutput.Count == 6);
+            Assert.IsNotNull((outputs.ModelOutput as GamblingOverallSummary));
+            Assert.IsTrue((outputs.ModelOutput as GamblingOverallSummary).GamblingGroupSummaries.Count == 4);
             //Test Parallel
             var outputs2 = Analyzer.Instance.Execute(inputs);
             Assert.IsTrue(outputs2.AnySave());

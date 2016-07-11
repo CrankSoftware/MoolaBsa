@@ -38,7 +38,7 @@ namespace Moola.Bsa.Logic.Models
             var accountConductInput = input as AccountConductInput;
             if (accountConductInput == null)
             {
-                throw new BsaInputParameterException("The parameter ModelInput cannot be null.");
+                throw new BsaInputParameterException("The parameter AccountConductInput cannot be null.");
             }
 
             var dateRangeInDays = accountConductInput.DateRangeInDays;

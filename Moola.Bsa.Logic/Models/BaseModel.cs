@@ -2,6 +2,7 @@
 using Moola.Bsa.Logic.Interfaces.Input;
 using Moola.Bsa.Logic.Interfaces.Output;
 using System;
+using System.Text.RegularExpressions;
 
 namespace Moola.Bsa.Logic.Models
 {
@@ -19,12 +20,16 @@ namespace Moola.Bsa.Logic.Models
                 return description;
             }
 
-            if (description.ToLowerInvariant().Contains(searchTerm.ToLowerInvariant()))
+            var matchedWord = Regex.Match(description, @"\b" + searchTerm + @"(\b|[_a-zA-Z0-9]+\b)",
+                RegexOptions.Singleline | RegexOptions.IgnoreCase);
+
+            if (!matchedWord.Success)
             {
-                return description.Substring(0, description.ToLowerInvariant().IndexOf(searchTerm.ToLowerInvariant(), StringComparison.InvariantCulture) + searchTerm.Length);
+                return string.Empty;
             }
 
-            return string.Empty;
+            return description.Substring(0, description.ToLowerInvariant().IndexOf(matchedWord.Value.ToLowerInvariant(), StringComparison.InvariantCulture) + matchedWord.Length);
+
         }
     }
 }

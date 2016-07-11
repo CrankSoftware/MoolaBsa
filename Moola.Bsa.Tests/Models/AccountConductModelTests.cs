@@ -14,7 +14,7 @@ namespace Moola.Bsa.Tests.Models
 {
 
     [TestClass()]
-    public class ModelTests
+    public class AccountConductModelTests
     {
         [TestMethod()]
         public void AccountConductModelTestSuccess()
@@ -106,7 +106,7 @@ namespace Moola.Bsa.Tests.Models
 
             testDescription = "fasffwffasf XERfdsfaas wfsdfas_xxee fasfdafwfsdfasf";
             testResult = new ModelTestClass().GetMatchedDistinctDescription(testDescription, testTerm);
-            Assert.IsTrue(testResult == "fasffwffasf XERfdsfaas wfsdfas");
+            Assert.IsTrue(testResult == "fasffwffasf XERfdsfaas wfsdfas_xxee");
         }
 
 

@@ -60,6 +60,7 @@
     <Compile Include="Models\AccountConductModel.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\FinanceWithdrawalsModel.cs" />
+    <Compile Include="Models\ForeignExchangeModel.cs" />
     <Compile Include="Models\GamblingModel.cs" />
     <Compile Include="Models\Inputs\FinanceDepositsInput.cs" />
     <Compile Include="Models\Inputs\IncomeInput.cs" />
@@ -71,6 +72,8 @@
     <Compile Include="Interfaces\IRecord.cs" />
     <Compile Include="Models\Outputs\FinanceWithdrawalsGroupSummary.cs" />
     <Compile Include="Models\Outputs\FinanceWithdrawalsOverallSummary.cs" />
+    <Compile Include="Models\Outputs\ForeignExchangeGroupSummary.cs" />
+    <Compile Include="Models\Outputs\ForeignExchangeOverallSummary.cs" />
     <Compile Include="Models\Outputs\GamblingOverallSummary.cs" />
     <Compile Include="Models\Outputs\GamblingGroupSummary.cs" />
     <Compile Include="Models\Outputs\AccountConductGroupSummary.cs" />

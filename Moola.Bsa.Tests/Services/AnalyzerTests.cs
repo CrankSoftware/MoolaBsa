@@ -30,6 +30,7 @@ namespace Moola.Bsa.Tests.Services
             //Test Singel One
             var outputs = Analyzer.Instance.Execute(inputs.FirstOrDefault(i=>i.ModelInput.BankRecords.Code== "WVBBKJ"));
             Assert.IsNotNull(outputs);
+            Assert.IsNotNull(outputs.ModelOutput);
             Assert.IsTrue(outputs.ModelOutput.Count==3);
             Assert.IsNotNull((outputs.ModelOutput as AccountConductOverallSummary));
             Assert.IsTrue((outputs.ModelOutput as AccountConductOverallSummary).AccountConductGroupSummaries.Count== 2);
@@ -55,6 +56,7 @@ namespace Moola.Bsa.Tests.Services
             //Test Singel One
             var outputs = Analyzer.Instance.Execute(inputs.FirstOrDefault(i => i.ModelInput.BankRecords.Code == "RE85MC"));
             Assert.IsNotNull(outputs);
+            Assert.IsNotNull(outputs.ModelOutput);
             Assert.IsTrue(outputs.ModelOutput.Count == 6);
             Assert.IsNotNull((outputs.ModelOutput as GamblingOverallSummary));
             Assert.IsTrue((outputs.ModelOutput as GamblingOverallSummary).GamblingGroupSummaries.Count == 4);
@@ -83,9 +85,36 @@ namespace Moola.Bsa.Tests.Services
             //Test Singel One
             var outputs = Analyzer.Instance.Execute(inputs.FirstOrDefault(i => i.ModelInput.BankRecords.Code == "RE85MC"));
             Assert.IsNotNull(outputs);
+            Assert.IsNotNull(outputs.ModelOutput);
             Assert.IsTrue(outputs.ModelOutput.Count == 4);
             Assert.IsNotNull((outputs.ModelOutput as FinanceWithdrawalsOverallSummary));
             Assert.IsTrue((outputs.ModelOutput as FinanceWithdrawalsOverallSummary).GamblingGroupSummaries.Count == 2);
+            //Test Parallel
+            var outputs2 = Analyzer.Instance.Execute(inputs);
+            Assert.IsTrue(outputs2.AnySave());
+        }
+
+        [TestMethod()]
+        public void ExecuteForeignExchangeModelTest()
+        {
+            var testData = TestRecords.GetTestData();
+            Assert.IsNotNull(testData);
+
+            var searchTerm = new List<string> { "Currency", "Conversion"};
+            var inputs = testData.Select(records => new AnalyzerInput(ForeignExchangeModel.Instance, new ForeignExchangeInput()
+            {
+                DateRangeInDays = 90,
+                FilterTerms = searchTerm,
+                BankRecords = records
+            })).ToList();
+
+            //Test Singel One
+            var outputs = Analyzer.Instance.Execute(inputs.FirstOrDefault(i => i.ModelInput.BankRecords.Code == "SNCT7W"));
+            Assert.IsNotNull(outputs);
+            Assert.IsNotNull(outputs.ModelOutput);
+            Assert.IsTrue(outputs.ModelOutput.Count == 7);
+            Assert.IsNotNull((outputs.ModelOutput as ForeignExchangeOverallSummary));
+            Assert.IsTrue((outputs.ModelOutput as ForeignExchangeOverallSummary).ForeignExchangeGroupSummaries.Count == 1);
             //Test Parallel
             var outputs2 = Analyzer.Instance.Execute(inputs);
             Assert.IsTrue(outputs2.AnySave());

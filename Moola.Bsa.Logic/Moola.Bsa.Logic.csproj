@@ -69,6 +69,8 @@
     <Compile Include="Models\Inputs\AccountConductInput.cs" />
     <Compile Include="Abstract\BaseModelInput.cs" />
     <Compile Include="Interfaces\IRecord.cs" />
+    <Compile Include="Models\Outputs\FinanceWithdrawalsGroupSummary.cs" />
+    <Compile Include="Models\Outputs\FinanceWithdrawalsOverallSummary.cs" />
     <Compile Include="Models\Outputs\GamblingOverallSummary.cs" />
     <Compile Include="Models\Outputs\GamblingGroupSummary.cs" />
     <Compile Include="Models\Outputs\AccountConductGroupSummary.cs" />
@@ -80,7 +82,9 @@
     <Compile Include="Services\AnalyzerInput.cs" />
     <Compile Include="Services\AnalyzerOutput.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

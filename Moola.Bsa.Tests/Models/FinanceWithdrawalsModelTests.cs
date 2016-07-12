@@ -11,52 +11,46 @@ namespace Moola.Bsa.Tests.Models
 {
 
     [TestClass()]
-    public class GamblingModelTests
+    public class FinanceWithdrawalsModelTests
     {
         [TestMethod()]
-        public void GamblingModelTestSuccess()
+        public void FinanceWithdrawalsModellTestSuccess()
         {
             var testData = TestRecords.GetTestData();
             Assert.IsNotNull(testData);
 
             var searchTerm = new List<string>
             {
-                "Casino",
-                "Digimedia",
-                "Racing",
-                "Seabrook",
-                "Sky City",
-                "Slots",
-                "TAB",
-                "ThePalac",
-                "B365",
-                "Sportsbet"
+                "Finance","Loan", "Admiral", "Avanti", "Cashburst", "Cash Converters", "Cash in a Flash",
+                "Cash Relief", "Cash Train", "CC Finance", "Chester", "Ferratum", "Handy Cash", "Harmoney",
+                "Instant Finance", "Loan Plus", "Loans 2 Go", "Payday Advance", "Pretty Penny Loans", "Rapid Loans",
+                 "Save My Bacon", "Seed", "Smart Cash", "Smart Shop", "SMB","Superloans", "Teleloans"
             };
 
             var recorddata = testData.FirstOrDefault(data => data.Code == "RE85MC");
-            var input = new GamblingInput()
+            var input = new FinanceWithdrawalsInput()
             {
                 DateRangeInDays = 90,
                 FilterTerms = searchTerm,
                 BankRecords = recorddata
             };
 
-            var outputs = GamblingModel.Instance.Analyze(input);
-            Assert.IsNotNull(outputs as GamblingOverallSummary);
-            Assert.IsTrue((outputs as GamblingOverallSummary).GamblingGroupSummaries.Count == 4);
-            Assert.IsTrue((outputs as GamblingOverallSummary).Count == 6);
+            var outputs = FinanceWithdrawalsModel.Instance.Analyze(input);
+            Assert.IsNotNull(outputs as FinanceWithdrawalsOverallSummary);
+            Assert.IsTrue((outputs as FinanceWithdrawalsOverallSummary).GamblingGroupSummaries.Count == 2);
+            Assert.IsTrue((outputs as FinanceWithdrawalsOverallSummary).Count == 4);
         }
 
         [TestMethod]
         [ExpectedException(typeof(BsaInputParameterException))]
-        public void GamblingModelTestNullInputException()
+        public void FinanceWithdrawalsModelTestNullInputException()
         {
-            GamblingModel.Instance.Analyze(null);
+            FinanceWithdrawalsModel.Instance.Analyze(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(BsaInputParameterException))]
-        public void GamblingModelTest0DateRangeInDaysException()
+        public void FinanceWithdrawalsModelTest0DateRangeInDaysException()
         {
             var input = new GamblingInput()
             {
@@ -64,12 +58,12 @@ namespace Moola.Bsa.Tests.Models
                 FilterTerms = new List<string>(),
                 BankRecords = null
             };
-            GamblingModel.Instance.Analyze(input);
+            FinanceWithdrawalsModel.Instance.Analyze(input);
         }
 
         [TestMethod]
         [ExpectedException(typeof(BsaInputParameterException))]
-        public void GamblingModelTestNullBankRecordsException()
+        public void FinanceWithdrawalsModelTestNullBankRecordsException()
         {
             var input = new GamblingInput()
             {
@@ -77,12 +71,12 @@ namespace Moola.Bsa.Tests.Models
                 FilterTerms = new List<string>(),
                 BankRecords = null
             };
-            GamblingModel.Instance.Analyze(input);
+            FinanceWithdrawalsModel.Instance.Analyze(input);
         }
 
         [TestMethod]
         [ExpectedException(typeof(BsaInputParameterException))]
-        public void GamblingModelTestNullRecordsException()
+        public void FinanceWithdrawalsModelTestNullRecordsException()
         {
             var bankRecords = new BankData("fake");
             var input = new GamblingInput()
@@ -91,7 +85,7 @@ namespace Moola.Bsa.Tests.Models
                 FilterTerms = new List<string>(),
                 BankRecords = bankRecords
             };
-            GamblingModel.Instance.Analyze(input);
+            FinanceWithdrawalsModel.Instance.Analyze(input);
         }
     }
 }

@@ -62,5 +62,33 @@ namespace Moola.Bsa.Tests.Services
             var outputs2 = Analyzer.Instance.Execute(inputs);
             Assert.IsTrue(outputs2.AnySave());
         }
+
+        [TestMethod()]
+        public void ExecuteFinanceWithdrawalsModelTest()
+        {
+            var testData = TestRecords.GetTestData();
+            Assert.IsNotNull(testData);
+
+            var searchTerm = new List<string> { "Finance","Loan", "Admiral", "Avanti", "Cashburst", "Cash Converters", "Cash in a Flash",
+                                                "Cash Relief", "Cash Train", "CC Finance", "Chester", "Ferratum", "Handy Cash", "Harmoney",
+                                                "Instant Finance", "Loan Plus", "Loans 2 Go", "Payday Advance", "Pretty Penny Loans", "Rapid Loans",
+                                                "Save My Bacon", "Seed", "Smart Cash", "Smart Shop", "SMB","Superloans", "Teleloans"};
+            var inputs = testData.Select(records => new AnalyzerInput(FinanceWithdrawalsModel.Instance, new FinanceWithdrawalsInput()
+            {
+                DateRangeInDays = 90,
+                FilterTerms = searchTerm,
+                BankRecords = records
+            })).ToList();
+
+            //Test Singel One
+            var outputs = Analyzer.Instance.Execute(inputs.FirstOrDefault(i => i.ModelInput.BankRecords.Code == "RE85MC"));
+            Assert.IsNotNull(outputs);
+            Assert.IsTrue(outputs.ModelOutput.Count == 4);
+            Assert.IsNotNull((outputs.ModelOutput as FinanceWithdrawalsOverallSummary));
+            Assert.IsTrue((outputs.ModelOutput as FinanceWithdrawalsOverallSummary).GamblingGroupSummaries.Count == 2);
+            //Test Parallel
+            var outputs2 = Analyzer.Instance.Execute(inputs);
+            Assert.IsTrue(outputs2.AnySave());
+        }
     }
 }

@@ -72,41 +72,20 @@ namespace Moola.Bsa.Logic.Models
             var recordsFilteredByDate =
                 accountConductInput.BankRecords.Records.Where(record => DateTime.Compare(record.TransactionDate, leastDateTime) >= 0 && record.Amount<0)
                                    .OrderBy(record=>record.Description);
-            
-            var matchedRecords = new Dictionary<string,List<IRecord>>();
-            foreach (var record in recordsFilteredByDate)
-            {
 
-                foreach (var term in accountConductInput.FilterTerms)
-                {
-                    var distinctMatchedDescription = GetMatchedDistinctDescription(record.Description, term);
-                    record.DistinctDescription = distinctMatchedDescription;
-                    if (!string.IsNullOrEmpty(distinctMatchedDescription))
-                    {
-                        if (matchedRecords.ContainsKey(distinctMatchedDescription))
-                        {
-                            matchedRecords[distinctMatchedDescription].Add(record);
-                        }
-                        else
-                        {
-                            matchedRecords.Add(distinctMatchedDescription, new List<IRecord>() {record});
-                        }
-                        break;
-                    }
-                }
-            }
-
-            if (!matchedRecords.Any())
+            IDictionary<string, IList<IRecord>> matchedRecords;
+            if (!GetMatchedRecords(recordsFilteredByDate, accountConductInput, out matchedRecords))
             {
                 return null;
             }
+
             //var summary
             //Output result 1
             var groupSummaries = new List<AccountConductGroupSummary>();
             foreach (var keyValuePair in matchedRecords)
             {
                 var groupSummary = new AccountConductGroupSummary();
-                groupSummary.Records = keyValuePair.Value;
+                groupSummary.Records = keyValuePair.Value.ToList();
                 groupSummary.DistinctDescription = keyValuePair.Key;
                 groupSummary.Count = keyValuePair.Value.Count;
                 groupSummary.Sum = keyValuePair.Value.Sum(record => record.Amount);

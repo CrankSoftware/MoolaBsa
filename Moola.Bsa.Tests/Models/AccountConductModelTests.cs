@@ -9,6 +9,7 @@ using Moola.Bsa.Logic.Interfaces.Input;
 using Moola.Bsa.Logic.Interfaces.Output;
 using System;
 using Moola.Bsa.Logic.Models;
+using Moola.Bsa.Logic.Enumerations;
 
 namespace Moola.Bsa.Tests.Models
 {

@@ -7,12 +7,28 @@ using Moola.Bsa.Logic.Models;
 using Moola.Bsa.Logic.Models.Inputs;
 using Moola.Bsa.Logic.Models.Outputs;
 using Moola.Bsa.Logic.Services;
+using Moola.Bsa.Logic.Exceptions;
+using Moola.Bsa.Logic.Interfaces.Analyser;
 
 namespace Moola.Bsa.Tests.Services
 {
     [TestClass()]
     public class AnalyzerTests
     {
+        [TestMethod]
+        [ExpectedException(typeof(BsaInputParameterException))]
+        public void AnalyzerTestNullInputException()
+        {
+            Analyzer.Instance.Execute(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(BsaInputParameterException))]
+        public void AnalyzerTestEmptyListInputException()
+        {
+            Analyzer.Instance.ExecuteMultipleModels(new List<IAnalyzerInput>());
+        }
+
         [TestMethod()]
         public void ExecuteAccountConduceModelTest()
         {
@@ -35,7 +51,7 @@ namespace Moola.Bsa.Tests.Services
             Assert.IsNotNull((outputs.ModelOutput as AccountConductOverallSummary));
             Assert.IsTrue((outputs.ModelOutput as AccountConductOverallSummary).AccountConductGroupSummaries.Count== 2);
             //Test Parallel
-            var outputs2 = Analyzer.Instance.Execute(inputs);
+            var outputs2 = Analyzer.Instance.ExecuteMultipleModels(inputs);
             Assert.IsTrue(outputs2.AnySave());
         }
 
@@ -61,7 +77,7 @@ namespace Moola.Bsa.Tests.Services
             Assert.IsNotNull((outputs.ModelOutput as GamblingOverallSummary));
             Assert.IsTrue((outputs.ModelOutput as GamblingOverallSummary).GamblingGroupSummaries.Count == 4);
             //Test Parallel
-            var outputs2 = Analyzer.Instance.Execute(inputs);
+            var outputs2 = Analyzer.Instance.ExecuteMultipleModels(inputs);
             Assert.IsTrue(outputs2.AnySave());
         }
 
@@ -90,7 +106,7 @@ namespace Moola.Bsa.Tests.Services
             Assert.IsNotNull((outputs.ModelOutput as FinanceWithdrawalsOverallSummary));
             Assert.IsTrue((outputs.ModelOutput as FinanceWithdrawalsOverallSummary).GamblingGroupSummaries.Count == 2);
             //Test Parallel
-            var outputs2 = Analyzer.Instance.Execute(inputs);
+            var outputs2 = Analyzer.Instance.ExecuteMultipleModels(inputs);
             Assert.IsTrue(outputs2.AnySave());
         }
 
@@ -116,7 +132,7 @@ namespace Moola.Bsa.Tests.Services
             Assert.IsNotNull((outputs.ModelOutput as ForeignExchangeOverallSummary));
             Assert.IsTrue((outputs.ModelOutput as ForeignExchangeOverallSummary).ForeignExchangeGroupSummaries.Count == 1);
             //Test Parallel
-            var outputs2 = Analyzer.Instance.Execute(inputs);
+            var outputs2 = Analyzer.Instance.ExecuteMultipleModels(inputs);
             Assert.IsTrue(outputs2.AnySave());
         }
     }

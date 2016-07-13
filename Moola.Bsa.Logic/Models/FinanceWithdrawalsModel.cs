@@ -35,24 +35,24 @@ namespace Moola.Bsa.Logic.Models
 
         public override IModelOutput Analyze(IModelInput input)
         {
-            var accountConductInput = input as FinanceWithdrawalsInput;
-            if (accountConductInput == null)
+            var financeWithdrawalsInput = input as FinanceWithdrawalsInput;
+            if (financeWithdrawalsInput == null)
             {
                 throw new BsaInputParameterException("The parameter FinanceWithdrawalsInput cannot be null.");
             }
 
-            var dateRangeInDays = accountConductInput.DateRangeInDays;
+            var dateRangeInDays = financeWithdrawalsInput.DateRangeInDays;
             if (dateRangeInDays == 0)
             {
                 throw new BsaInputParameterException("The DateRangeInDays value cannot be 0 or less than 0.");
             }
 
-            if (accountConductInput.FilterType != FilterType.FilterIn)
+            if (financeWithdrawalsInput.FilterType != FilterType.FilterIn)
             {
                 throw new BsaInputParameterException("The FilterType value must be FilterIn");
             }
 
-            if (accountConductInput.FilterPolarity != FilterPolarity.NegativeValues)
+            if (financeWithdrawalsInput.FilterPolarity != FilterPolarity.NegativeValues)
             {
                 throw new BsaInputParameterException("The FilterPolarity value for this model must be Nagative");
             }
@@ -70,43 +70,22 @@ namespace Moola.Bsa.Logic.Models
             var leastDateTime = DateTime.UtcNow.AddDays(-dateRangeInDays);
 
             var recordsFilteredByDate =
-                accountConductInput.BankRecords.Records.Where(record => DateTime.Compare(record.TransactionDate, leastDateTime) >= 0 && record.Amount < 0)
+                financeWithdrawalsInput.BankRecords.Records.Where(record => DateTime.Compare(record.TransactionDate, leastDateTime) >= 0 && record.Amount < 0)
                                    .OrderBy(record => record.Description);
 
-            var matchedRecords = new Dictionary<string, List<IRecord>>();
-            foreach (var record in recordsFilteredByDate)
-            {
-
-                foreach (var term in accountConductInput.FilterTerms)
-                {
-                    var distinctMatchedDescription = GetMatchedDistinctDescription(record.Description, term);
-                    record.DistinctDescription = distinctMatchedDescription;
-                    if (!string.IsNullOrEmpty(distinctMatchedDescription))
-                    {
-                        if (matchedRecords.ContainsKey(distinctMatchedDescription))
-                        {
-                            matchedRecords[distinctMatchedDescription].Add(record);
-                        }
-                        else
-                        {
-                            matchedRecords.Add(distinctMatchedDescription, new List<IRecord>() { record });
-                        }
-                        break;
-                    }
-                }
-            }
-
-            if (!matchedRecords.Any())
+            IDictionary<string, IList<IRecord>> matchedRecords;
+            if (!GetMatchedRecords(recordsFilteredByDate, financeWithdrawalsInput, out matchedRecords))
             {
                 return null;
             }
+
             //var summary
             //Output result 1
             var groupSummaries = new List<FinanceWithdrawalsGroupSummary>();
             foreach (var keyValuePair in matchedRecords)
             {
                 var groupSummary = new FinanceWithdrawalsGroupSummary();
-                groupSummary.Records = keyValuePair.Value;
+                groupSummary.Records = keyValuePair.Value.ToList();
                 groupSummary.DistinctDescription = keyValuePair.Key;
                 groupSummary.Count = keyValuePair.Value.Count;
                 groupSummary.Sum = keyValuePair.Value.Sum(record => record.Amount);

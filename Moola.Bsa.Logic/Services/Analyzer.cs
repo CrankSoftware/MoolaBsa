@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Moola.Bsa.Logic.ExtensionMethods;
 using Moola.Bsa.Logic.Interfaces.Analyser;
+using Moola.Bsa.Logic.Exceptions;
 
 namespace Moola.Bsa.Logic.Services
 {
@@ -26,19 +27,19 @@ namespace Moola.Bsa.Logic.Services
         {
             if (input == null)
             {
-                return null;
+                throw new BsaInputParameterException("The Analyzer Input value cannot be null or empty");
             }
 
             return new AnalyzerOutput(input.Model, input.Model.Analyze(input.ModelInput));
         }
 
-        public IEnumerable<IAnalyzerOutput> Execute(IEnumerable<IAnalyzerInput> inputs)
+        public IEnumerable<IAnalyzerOutput> ExecuteMultipleModels(IEnumerable<IAnalyzerInput> inputs)
         {
             var analyzerInputs = inputs.ToList();
             ConcurrentBag<IAnalyzerOutput> concurrentResult = new ConcurrentBag<IAnalyzerOutput>();
             if (!analyzerInputs.AnySave())
             {
-                return new List<IAnalyzerOutput>();
+                throw new BsaInputParameterException("The Analyzer Input value cannot be null or empty");
             }
 
             Parallel.ForEach(analyzerInputs, input =>
